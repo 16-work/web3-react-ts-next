@@ -1,0 +1,49 @@
+/** 字体颜色 */
+// 标题
+.text-title-1 {
+  @apply text-black font-bold;
+}
+
+
+
+
+/** 字体大小 (2倍图所以xs*2) */
+.font-3xl {
+  @apply xs:text-48 md:text-24;
+}
+.font-2xl {
+  @apply xs:text-44 md:text-22;
+}
+.font-xl {
+  @apply xs:text-40 md:text-20;
+}
+.font-lg {
+  @apply xs:text-36 md:text-18;
+}
+.font-base {
+  @apply xs:text-32 md:text-16;
+}
+.font-sm {
+  @apply xs:text-28 md:text-14;
+}
+.font-xs {
+  @apply xs:text-24 md:text-12;
+}
+
+
+
+/* 超出省略 */
+.ellipsis-1 {
+  @apply overflow-ellipsis overflow-hidden whitespace-nowrap;
+}
+
+.ellipsis-2 {
+  -webkit-line-clamp: 2;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: normal;
+  white-space: normal;
+  overflow-wrap: break-word;
+}

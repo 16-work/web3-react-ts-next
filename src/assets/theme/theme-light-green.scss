@@ -1,0 +1,65 @@
+$theme-name: 'theme-light-green'; 
+
+// 只用颜色变量的话可以只写这(eg. var(--cus-gray-100))
+// 注意：不要用--c，会和antd冲突
+
+// 主色系
+.primary {
+  --cus-primary-1: 41, 254, 59; // #2997fe
+  --cus-primary-2: 60, 121, 253; // #3c79fd 
+}
+
+// 次色系
+.second {
+  --cus-second-1: 47, 245, 238; // #2ff5ee
+}
+
+// 灰色系
+.gray {
+  --cus-gray-100: 254, 253, 248; // #FFFDF8
+  --cus-gray-500: 153, 153, 153; // #999
+  --cus-gray-900: 51, 51, 51; // #333
+}
+
+// 功能色
+.feature {
+  // 轻松型
+  --cus-relax-1: 126, 187, 146; // #7EBB92
+
+  // 信息型
+  --cus-info-1: 115, 171, 250; // #73ABFA
+  --cus-info-2: 31, 125, 226; // #1F7DE2
+
+  // 警告型
+  --cus-warning-1: 251, 218, 69; // #FBDA45
+
+  // 压力型
+  --cus-stress-1: 226, 92, 85; // #E25C55
+}
+
+// 文本色
+.text {
+  --text-common-1: var(--cus-gray-900);
+  --text-tip-1: var(--cus-gray-500);
+}
+
+// 其它（这里的颜色如果不需要放在color.ts，颜色格式可随意）
+.other {
+  --cus-skeleton: 0, 0, 0;
+  --cus-scrollbar: rgba(0, 0, 0, 0.15);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .#{$theme-name} {
+    @extend .primary;
+    @extend .second;
+    @extend .gray;
+    @extend .feature;
+    @extend .text;
+    @extend .other;
+  }
+}

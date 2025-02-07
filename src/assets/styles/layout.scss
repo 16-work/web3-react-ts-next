@@ -1,0 +1,53 @@
+/* 顶部导航配置 */
+#layout-nav {
+  @apply max-w-1650 xs:h-80 md:h-60  /* 最大宽 & 高 */
+  xs:px-20 md:px-40;  /* 安全边距 */
+}
+
+/* 页面主体配置 */
+#layout-main {
+  @apply xs:pt-100 md:pt-80;  /* 距离顶部的距离 = 导航高度 + 距离顶部的边距 */
+
+  // 版心
+  .w {
+    @apply max-w-1340  /* 最大宽 */
+    xs:px-20 md:px-40;  /* 安全边距 */
+  }
+}
+
+/* 页脚配置 */
+#layout-footer {
+  @apply max-w-1340 h-80 /* 最大宽 & 高 */
+  pt-20 xs:px-20 md:px-40;  /* 安全边距 */
+}
+
+
+
+
+/* 布局基础配置(正常不需要改) */ 
+#layout {
+  @apply w-screen h-screen overflow-hidden;
+
+  #layout-nav-base {
+    @apply w-full fixed position-center-h z-[5] flex-align-x;
+
+    #layout-nav {
+      @apply w-full flex-align-x justify-between mx-auto;
+    }
+  }
+
+  // layout-main不建议套base,防止UI设计贯穿样式
+  #layout-main {
+    .w {
+      @apply relative position-center-h z-[1];
+    }
+  }
+
+  #layout-footer-base {
+    @apply w-full relative position-center-h flex-align-x;
+
+    #layout-footer {
+      @apply w-full flex-align-x mx-auto;
+    }
+  }
+}

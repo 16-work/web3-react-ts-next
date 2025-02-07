@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-custom);
+}
+
+pre {
+  outline: none;
+  white-space: pre-wrap; /*css-3*/
+  white-space: -moz-pre-wrap; /*Mozilla,since1999*/
+  white-space: -pre-wrap; /*Opera4-6*/
+  white-space: -o-pre-wrap; /*Opera7*/
+  word-wrap: break-word; /*InternetExplorer5.5+*/
+}
+
+input {
+  background: transparent;
+}
+
+
+/* 屏幕适配 */
+// 方案1: 固定尺寸
+html {
+  font-size: 16px;
+
+  @media screen and (max-width: 750px) {
+    font-size: 8px; // 移动端设计稿为2倍图(w-750)
+    // font-size: 16px; // 移动端设计稿为1倍图(w-375)
+  }
+}
+
+// 方案2: 动态尺寸
+// $MDMinFontSize: 12px;  // 中屏最小根字号
+// $MDMaxFontSize: 16px; // 中屏最大根字号
+// $MDMinScreen: 750px; // 中屏最小屏幕宽度
+// $MDMaxScreen: 1920px; // 中屏最大屏幕宽度
+
+// $XSMinFontSize: 8px;  // 小屏最小根字号
+// $XSMaxFontSize: 16px; // 小屏最大根字号
+// $XSMinScreen: 375px; // 小屏最小屏幕宽度
+// $XSMaxScreen: 750px; // 小屏最大屏幕宽度
+
+// html {
+//   // 大于最大范围时的默认根字号
+//   font-size: 16px; 
+ 
+//   // 小于最小范围时的默认根字号
+//   @media screen and (max-width: $XSMinScreen) {
+//     font-size: 8px; // 移动端设计稿为2倍图(w-750)
+//     // font-size: 16px; // 移动端设计稿为1倍图(w-375)
+//   }
+
+//   // 中屏动态根字号
+//   @media screen and (min-width: $MDMinScreen) and (max-width: $MDMaxScreen) {
+//     font-size: calc(
+//       $MDMinFontSize + (($MDMaxFontSize - $MDMinFontSize) / ($MDMaxScreen - $MDMinScreen)) * (100vw - $MDMinScreen)
+//     );
+//   }
+
+//   // 小屏动态根字号
+//   @media screen and (min-width: $XSMinScreen) and (max-width: $XSMaxScreen) {
+//     font-size: calc(
+//       $XSMinFontSize + (($XSMaxFontSize - $XSMinFontSize) / ($XSMaxScreen - $XSMinScreen)) * (100vw - $XSMinScreen)
+//       ) ;
+//   }
+// }
+
+
+
+
+/* 滚动条相关 */
+// html {
+//   overflow-y: hidden;
+// }
+
+#root {
+  height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow:inset006pxrgba(0,0,0,0.3);
+  border-radius:10px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius:10px;
+  background: var(--cus-scrollbar);
+  -webkit-box-shadow:inset006pxrgba(0,0,0,0.5);
+}

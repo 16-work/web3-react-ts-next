@@ -1,0 +1,12 @@
+nextjs-portal {
+  display: none;
+}
+
+// 信息提示
+.Toastify__toast{
+  font-size: 16px !important;
+
+  @media screen and (max-width: 750px) {
+    font-size: 16px !important;
+  }
+}
