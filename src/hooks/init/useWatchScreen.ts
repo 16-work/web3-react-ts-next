@@ -14,11 +14,6 @@ export const useWatchScreen = () => {
       // 判断设备类型(PC/Mobile) & 屏幕类型
       setIsPC(window.innerWidth > screenMinSize[SCREEN.MD] && !isMobileDevice() ? true : false);
       setScreenType(tools.getScreenType()!);
-
-      // 设置页面最小高度
-      const domLayoutFooter = document.querySelector('#layout-footer') as HTMLElement;
-      const domLayoutMain = document.querySelector('#layout-main') as HTMLElement;
-      domLayoutMain.style.minHeight = `${window.innerHeight - domLayoutFooter.clientHeight}px`;
     };
     resize(); // 初始检测
 

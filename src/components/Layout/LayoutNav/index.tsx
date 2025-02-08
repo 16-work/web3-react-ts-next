@@ -16,8 +16,8 @@ export const LayoutNav = () => {
 
   /** Actions */
   // 防止wagmi报Hydration failed
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
+  // useEffect(() => setMounted(true), []);
+  // if (!mounted) return null;
 
   /** Template */
   return (
