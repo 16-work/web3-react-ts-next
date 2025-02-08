@@ -87,7 +87,7 @@ export const useContract = () => {
             msg.warning(t.tip.switchNetwork);
             switchChain();
           } else {
-            if (process.env.NEXT_PUBLIC_ENV !== 'production') console.log(otherParams);
+            if (process.env.NEXT_PUBLIC_ENV !== 'prod') console.log(otherParams);
             msg.error(error);
           }
         });
@@ -110,7 +110,7 @@ export const useContract = () => {
         return res as any;
       } catch (e) {
         console.log(e);
-        if (process.env.NEXT_PUBLIC_ENV !== 'production') console.log(params);
+        if (process.env.NEXT_PUBLIC_ENV !== 'prod') console.log(params);
 
         return undefined;
       }
