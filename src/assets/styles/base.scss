@@ -8,6 +8,7 @@ body {
 }
 
 pre {
+  font-family: var(--font-custom);
   outline: none;
   white-space: pre-wrap; /*css-3*/
   white-space: -moz-pre-wrap; /*Mozilla,since1999*/

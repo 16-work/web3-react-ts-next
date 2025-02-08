@@ -24,6 +24,9 @@ export default {
       ...cusColors.text,
     },
     extend: {
+      fontFamily: {
+        custom: 'var(--font-custom)',
+      },
       screens: screenSizes,
       fontSize: commonSizes,
       width: commonSizes,

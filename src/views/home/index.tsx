@@ -9,5 +9,11 @@ export const PageHome = () => {
   /** Actions */
 
   /** Template */
-  return <div className="page-home     w">home</div>;
+  return (
+    <div className="page-home     w">
+      home
+      <div className="font-thin">AAA</div>
+      <div className="font-[700]">AAA</div>
+    </div>
+  );
 };
