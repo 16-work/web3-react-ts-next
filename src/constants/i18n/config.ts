@@ -3,7 +3,7 @@ import { localCache } from '@/utils/localCache';
 /* 支持的语言 */
 export const supportLanguages = {
   en: 'English',
-  // 'zh-CN': '简体中文',
+  'zh-CN': '简体中文',
   // 'zh-TW': '繁体中文',
 };
 
