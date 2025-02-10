@@ -11,11 +11,6 @@ pnpm i
 ```
 
 ```cmd
-# 如需使用turbo，请执行本命令
-pnpm build:packages 
-```
-
-```cmd
 pnpm dev
 
 # 如果不知道怎么改接口（见[二.2]），换用pnpm mock，里面有一些虚拟接口
