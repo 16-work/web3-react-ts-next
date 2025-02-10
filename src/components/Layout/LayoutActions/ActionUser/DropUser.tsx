@@ -44,25 +44,27 @@ export const DropUser = (props: Props) => {
 
   /** Template */
   return (
-    <div className="drop-user    relative md:px-20 md:py-10">
-      {/* list */}
-      {list.map((item, index) => (
-        <div key={index}>
-          {/* hr */}
-          {index !== 0 && <div className="hr-1 my-10"></div>}
+    account.address && (
+      <div className="drop-user    relative md:px-20 md:py-10">
+        {/* list */}
+        {list.map((item, index) => (
+          <div key={index}>
+            {/* hr */}
+            {index !== 0 && <div className="hr-1 my-10"></div>}
 
-          {/* item */}
-          <Item
-            icon={item.icon}
-            label={item.label}
-            onClick={() => {
-              item.onClick();
-              props.onClose && props.onClose();
-            }}
-          />
-        </div>
-      ))}
-    </div>
+            {/* item */}
+            <Item
+              icon={item.icon}
+              label={item.label}
+              onClick={() => {
+                item.onClick();
+                props.onClose && props.onClose();
+              }}
+            />
+          </div>
+        ))}
+      </div>
+    )
   );
 };
 

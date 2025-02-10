@@ -670,10 +670,10 @@ export const languageConfig = {
 
 #### 5.4 第三方组件语言
 
-一些第三方组件的语言需要单独配置，举例见`AntdProvider.tsx`和`WalletProvider.tsx`
+一些第三方组件的语言需要单独配置，举例见`ProviderAntd.tsx`和`ProviderWallet.tsx`
 
 ```ts
-// @/components/Base/AntdProvider.tsx
+// @/components/Providers/ProviderAntd.tsx
 import en from 'antd/locale/en_US';
 import zhCN from 'antd/locale/zh_CN';
 import zhTW from 'antd/locale/zh_TW';
@@ -697,7 +697,7 @@ import zhTW from 'antd/locale/zh_TW';
 ```
 
 ```ts
-// @/components/Wbe3/WalletProvider.tsx
+// @/components/Providers/ProviderWallet.tsx
   /** Retrieval */
   const { language } = store.global();
 
@@ -1341,6 +1341,11 @@ useEffect(() => {
     --Popover 弹出提示
       --PopoverText.tsx // 文本弹出提示
       --PopoverTip.tsx // 解释弹出提示
+
+    --Providers
+      --index.tsx
+      --ProviderAntd.tsx // Antd配置
+      --ProviderWallet.tsx // 钱包配置
 
     --LoadMore // 加载更多
       --AllDataScrollLoad.tsx // 无限滚动(列表只取一次且超多条数据时可以考虑用)
