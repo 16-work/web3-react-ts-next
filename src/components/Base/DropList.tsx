@@ -2,6 +2,7 @@ import { Option } from '@/types/common';
 import { Popover, PopoverProps } from 'antd';
 import { TooltipPlacement } from 'antd/es/tooltip';
 import { ReactNode, useMemo, useRef, useState } from 'react';
+import { Svg } from '../Icon/Svg';
 import { NoData } from './NoData';
 
 const styleType = {
@@ -11,7 +12,7 @@ const styleType = {
     list: 'max-h-300 ',
     option: 'px-20 py-10 text-common-1 hover-primary font-base',
     activeOption: 'bg-primary-1 !text-common-1',
-    hr: '',
+    hr: 'h-1 mx-0 bg-black',
   },
   second: {
     triggerBox: '',
@@ -79,7 +80,7 @@ export const DropList = (props: Props) => {
                   props.onSelect(option.value);
                   setOpen(false);
                 }}
-                className={`${className.option} cursor-pointer
+                className={`${className.option}
                     ${props.value === option.value ? className.activeOption : ''}
                   `}
               >
@@ -108,6 +109,9 @@ export const DropList = (props: Props) => {
       >
         {/* current value */}
         {props.children(props.options.find((item) => item.value === props.value) ?? { label: '', value: undefined })}
+
+        {/* icon: arrow */}
+        <Svg name="arrow-down" className={`${className.triggerArrow}`} />
       </div>
     </Popover>
   );
