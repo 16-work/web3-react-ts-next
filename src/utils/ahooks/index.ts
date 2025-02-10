@@ -1,5 +1,5 @@
-import { useRequest as useCusRequest } from './useRequest';
-import { useLockFn as useCusLockFn } from './useLockFn';
+import { useCusRequest } from './useRequest';
+import { useCusLockFn } from './useLockFn';
 
 // 覆盖原有方法
 export const useRequest = useCusRequest;
