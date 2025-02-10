@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node config/env/index.js --env=dev && next dev",
-    "mock": "node config/env/index.js --env=mock && next dev",
-    "test": "node config/env/index.js --env=test && next dev",
+    "open-browser": "explorer http://localhost:3000",
+    "dev": "node config/env/index.js --env=dev && npm run open-browser & next dev",
+    "mock": "node config/env/index.js --env=mock && npm run open-browser & next dev",
+    "test": "node config/env/index.js --env=test && npm run open-browser & next dev",
     "build": "node config/env/index.js --env=prod && next build",
-    "start": "next start -p 9000",
+    "preview": "explorer http://localhost:9000 & next start -p 9000",
     "lint": "next lint",
     "i18n": "node src/constants/i18n/script/excelToLang.js",
     "theme": "node config/tailwindcss/scripts/index.js"

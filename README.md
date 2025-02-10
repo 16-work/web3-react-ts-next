@@ -54,7 +54,7 @@ config
     --.env.dev // 开发环境变量
     --.env.devProd // 测试环境变量
     --.env.production // 生产环境变量
-    --.env.mock // 暂时没有相关功能
+    --.env.mock // 虚拟环境变量(无接口时用)
 ```
 
 
@@ -148,6 +148,34 @@ const res = await api.模块名.方法名(参数);
 **举例：**
 
 示例见`@/api`目录下的common和token模块内容
+
+
+
+#### 2.2 编写虚拟数据
+
+```
+--mock
+  --模块名.mock.ts
+```
+
+**定义虚拟接口：**
+
+```ts
+// mock/模块名.mock.ts
+export default {
+  'url': data,
+};
+```
+
+**切换到虚拟环境：**
+
+```
+pnpm mock
+```
+
+**举例：**
+
+示例见源码`mock`目录下的内容，和`@/api`下的内容是一一对应的。
 
 
 

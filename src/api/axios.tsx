@@ -3,6 +3,7 @@ import { localCache } from '@/utils/localCache';
 import { msg, toast } from '@/utils/notification';
 import { tools } from '@/utils/tools';
 import axios from 'axios';
+import { getMockData } from 'mock';
 
 export const http = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -37,6 +38,11 @@ http.interceptors.response.use(
 
     const { response } = error;
     if (!response || !response.status || !response.data) {
+      // 进mock
+      if (process.env.NEXT_PUBLIC_ENV === 'mock') {
+        return getMockData(error.config.url);
+      }
+
       const toastId = 'networkError';
       const isActive = msg.isActive?.(toastId);
       isActive
