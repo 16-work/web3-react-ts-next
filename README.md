@@ -332,7 +332,7 @@ html {
 #### 4.3 布局配置
 
 ```scss
-// @/assets/css/layout.scss
+// @/assets/styles/layout.scss
 /* 顶部导航配置 */
 #layout-nav {
   @apply max-w-1650  /* 最大宽 */
@@ -357,37 +357,6 @@ html {
   @apply max-w-1340  /* 最大宽 */
   h-80  /* 页脚高度(修改后,需要同步修改第10行) */
   pt-20 xs:px-20 md:px-40;  /* 安全边距 */
-}
-
-
-
-
-/* 布局基础配置(正常不需要改) */ 
-#layout {
-  @apply w-screen h-screen overflow-hidden;
-
-  #layout-nav-base {
-    @apply w-full fixed position-center-h z-[5] flex-align-x;
-
-    #layout-nav {
-      @apply w-full flex-align-x justify-between mx-auto;
-    }
-  }
-
-  // layout-main不建议套base,防止UI设计贯穿样式
-  #layout-main {
-    .w {
-      @apply relative position-center-h z-[1];
-    }
-  }
-
-  #layout-footer-base {
-    @apply w-full relative position-center-h flex-align-x;
-
-    #layout-footer {
-      @apply w-full flex-align-x mx-auto;
-    }
-  }
 }
 ```
 
