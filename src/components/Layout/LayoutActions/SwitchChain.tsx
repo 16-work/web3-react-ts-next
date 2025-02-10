@@ -5,12 +5,21 @@ import { Svg } from '@/components/Icon/Svg';
 import { CHAINS_ICON } from '@/constants/chain';
 import { useAccount } from '@/hooks/useAccount';
 import useWallet from '@/hooks/useWallet';
+import { useEffect, useState } from 'react';
 
 /** Component */
 export const SwitchChain = () => {
   /** Retrieval */
   const account = useAccount();
   const { switchChain } = useWallet();
+
+  /** Params */
+  const [mounted, setMounted] = useState(false);
+
+  /** Actions */
+  // 防止wagmi报Hydration failed
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
 
   /** Template */
   return (
