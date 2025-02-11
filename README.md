@@ -1077,7 +1077,7 @@ account.chain ? '在' : '不在'
 **配置项目链：**
 
 ```ts
-// @/constants/chains.ts
+// @/constants/chain/index.ts
 // 默认链
 export const DEFAULT_CHAIN = {
   PROD: chains.mainnet,
