@@ -4,11 +4,11 @@ import { Drawer } from '@/components/Base/Drawer';
 import { Svg } from '@/components/Icon/Svg';
 import useWallet from '@/hooks/useWallet';
 import { store } from '@/store';
-import { useAccount } from 'wagmi';
 import { ActionUser } from '../LayoutActions/ActionUser';
 import { SwitchLanguage } from '../LayoutActions/SwitchLanguage';
 import { SwitchTheme } from '../LayoutActions/SwitchTheme';
 import { Menus } from './Menus';
+import { useAccount } from '@/hooks/useAccount';
 
 /** Component */
 export const LayoutDrawer = () => {

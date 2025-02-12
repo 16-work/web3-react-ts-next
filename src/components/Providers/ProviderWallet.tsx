@@ -1,41 +1,51 @@
 'use client';
-import { WAGMI_CONFIG } from '@/constants/wagmi';
-import { store } from '@/store';
-import { RainbowKitProvider, darkTheme, lightTheme } from '@rainbow-me/rainbowkit';
-import '@rainbow-me/rainbowkit/styles.css';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactNode, useMemo } from 'react';
-import { WagmiProvider } from 'wagmi';
 
-/** Constants */
-const queryClient = new QueryClient();
-const theme = { accentColor: 'rgb(var(--cus-primary-1))' }; // 主题
+import { ConnectionProvider, WalletProvider as SolanaContextProvider } from '@solana/wallet-adapter-react';
+import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
+import {
+  PhantomWalletAdapter,
+  TrustWalletAdapter,
+  WalletConnectWalletAdapter,
+  SolflareWalletAdapter,
+  TokenPocketWalletAdapter,
+} from '@solana/wallet-adapter-wallets';
+import { Connection } from '@solana/web3.js';
+import { FC, ReactNode, useMemo } from 'react';
+import '@solana/wallet-adapter-react-ui/styles.css';
+import { SOLANA_CLUSTER } from '@/constants/rpc';
 
-/** Component */
-export const ProviderWallet = (props: { children: ReactNode }) => {
-  /** Retrieval */
-  const { language } = store.global();
+export const connection = new Connection(SOLANA_CLUSTER);
 
-  /** Params */
-  const locale = useMemo(() => {
-    switch (language) {
-      case 'zh-CN':
-        return 'zh';
-      case 'zh-TW':
-        return 'zh';
-      default:
-        return 'en';
-    }
-  }, [language]);
+export const ProviderWallet: FC<{ children: ReactNode }> = ({ children }) => {
+  const endpoint = SOLANA_CLUSTER;
+  const wallets = useMemo(() => {
+    return [
+      new PhantomWalletAdapter(),
+      new TrustWalletAdapter(),
+      new SolflareWalletAdapter(),
+      new TokenPocketWalletAdapter(),
+      new WalletConnectWalletAdapter({
+        // @ts-ignore
+        network: 'mainnet-beta',
+        options: {
+          relayUrl: 'wss://relay.walletconnect.com',
+          projectId: 'e899c82be21d4acca2c8aec45e893598',
+          // @ts-ignore
+          metadata: {
+            name: process.env.NEXT_PUBLIC_APPNAME,
+            description: process.env.NEXT_PUBLIC_APPNAME,
+            url: '',
+          },
+        },
+      }),
+    ];
+  }, []);
 
-  /** Template */
   return (
-    <WagmiProvider config={WAGMI_CONFIG}>
-      <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider locale={locale} theme={store.global().theme.search('light') !== -1 ? lightTheme(theme) : darkTheme(theme)} coolMode>
-          {props.children}
-        </RainbowKitProvider>
-      </QueryClientProvider>
-    </WagmiProvider>
+    <ConnectionProvider endpoint={endpoint}>
+      <SolanaContextProvider wallets={wallets} autoConnect={true}>
+        <WalletModalProvider>{children}</WalletModalProvider>
+      </SolanaContextProvider>
+    </ConnectionProvider>
   );
 };

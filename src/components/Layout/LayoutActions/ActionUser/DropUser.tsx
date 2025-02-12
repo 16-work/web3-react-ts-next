@@ -1,12 +1,12 @@
 'use client';
 
 import { Svg } from '@/components/Icon/Svg';
+import { useAccount } from '@/hooks/useAccount';
 import useWallet from '@/hooks/useWallet';
 import { store } from '@/store';
 import { useCreation } from '@/utils/ahooks';
 import { tools } from '@/utils/tools';
 import { SCREEN } from '@config/tailwindcss/screen';
-import { useAccount } from 'wagmi';
 
 /** Props */
 interface Props {

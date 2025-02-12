@@ -1,1 +1,1 @@
-export const ABIDemo = [];
+export const ABIDemo = {};

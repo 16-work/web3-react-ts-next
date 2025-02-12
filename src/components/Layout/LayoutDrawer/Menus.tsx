@@ -1,8 +1,8 @@
 import { useMenus } from '@/hooks/useMenus';
 import { store } from '@/store';
 import Link from 'next/link';
-import { useAccount } from 'wagmi';
 import { DropUser } from '../LayoutActions/ActionUser/DropUser';
+import { useAccount } from '@/hooks/useAccount';
 
 /** Component */
 export const Menus = () => {

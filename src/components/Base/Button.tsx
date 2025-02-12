@@ -26,7 +26,7 @@ export const Button = (props: Props) => {
   /** Retrieval */
   const account = useAccount();
   const { t } = useTranslation();
-  const { connect, switchChain } = useWallet();
+  const { connect } = useWallet();
 
   /** Params */
   const { auth, onClick, ...params } = props;
@@ -34,17 +34,14 @@ export const Button = (props: Props) => {
   const btnStatus = useMemo(() => {
     if (auth) {
       if (!account.address) return BtnStatus.UNCONNECT;
-      else if (!account.chain) return BtnStatus.WRONGNETWORK;
     }
     return BtnStatus.CORRECT;
-  }, [account.address, account.chain, auth]);
+  }, [account.address, auth]);
 
   const btnContent = useMemo(() => {
     switch (btnStatus) {
       case BtnStatus.UNCONNECT:
         return t.account.connectWallet;
-      case BtnStatus.WRONGNETWORK:
-        return t.account.switchNetwork;
       default:
         return props.children;
     }
@@ -54,8 +51,6 @@ export const Button = (props: Props) => {
     switch (btnStatus) {
       case BtnStatus.UNCONNECT:
         return connect;
-      case BtnStatus.WRONGNETWORK:
-        return switchChain;
       default:
         return !props.disabled && !props.isLoading ? props.onClick : () => {};
     }

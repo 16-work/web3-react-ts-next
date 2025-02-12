@@ -1,11 +1,9 @@
-import { chains, DEFAULT_CHAIN_CURRENT } from '@/constants/chain';
+import { SCAN } from '@/constants/chain';
 import { languageConfig } from '@/constants/i18n/config';
 import { lang } from '@/constants/i18n/lang';
-import { WAGMI_CONFIG } from '@/constants/wagmi';
 import { SCREEN, screenMinSize } from '@config/tailwindcss/screen';
 import BigNumber from 'bignumber.js';
 import copy from 'copy-to-clipboard';
-import { getBytecode } from 'wagmi/actions';
 import { localCache } from './localCache';
 import { msg } from './notification';
 
@@ -109,33 +107,8 @@ export const tools = {
     }
   },
 
-  // 判断地址类型
-  getAddressType: async (hash: string) => {
-    try {
-      const res = await getBytecode(WAGMI_CONFIG, { address: hash as `0x${string}` });
-      if (res) return 'contract';
-      else return 'account';
-    } catch (error) {
-      return 'error';
-    }
-  },
-
-  // 通过id获取chain
-  getChainById: (chainId: number) => {
-    return Object.values(chains).find((chain) => chain.id === chainId);
-  },
-
-  // 获取scan
-  getScan: (chainId: number = DEFAULT_CHAIN_CURRENT.id) => {
-    const chain = tools.getChainById(chainId);
-    return `${chain?.['blockExplorers']?.['default']['url']}`;
-  },
-
   // 跳转到scan
-  gotoScan: (hash: string, chainId: number = DEFAULT_CHAIN_CURRENT.id) => {
-    const chain = tools.getChainById(chainId);
-    if (chain) {
-      window.open(`${chain?.['blockExplorers']?.['default']['url']}/tx/${hash}`);
-    }
+  gotoScan: (hash: string) => {
+    window.open(`${SCAN}/tx/${hash}`);
   },
 };

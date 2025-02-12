@@ -19,7 +19,7 @@ export const BtnUser = () => {
     <Button className={`btn-user    ${baseClassName} btn-primary `}>{format.address(account.address, 6, 4)}</Button>
   ) : (
     // btn: connect
-    <Button onClick={connect} isLoading={account.isConnecting || account.isReconnecting} className={`btn-connect    ${baseClassName} btn-primary `}>
+    <Button onClick={connect} isLoading={account.isConnecting} className={`btn-connect    ${baseClassName} btn-primary `}>
       <span className="font-base">Connect</span>
     </Button>
   );

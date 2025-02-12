@@ -200,14 +200,14 @@ export const format = {
     common: (
       value?: BigNumber | string | bigint | number,
       options?: {
-        decimals?: number; // 精度(默认18)
+        decimals?: number; // 精度(默认9)
         bignumDecimals?: number; // 格式化后的小数位数
         isAbbr?: boolean; // 是否开启缩写
         abbrOrigin?: number | (typeof NUMBER_ABBRS)[number]; // 大于指定值后开始缩写
       }
     ) => {
       // before
-      const decimals = options?.decimals ?? 18;
+      const decimals = options?.decimals ?? 9;
 
       // main
       const str = BigNumber((value ?? 0).toString())
@@ -220,14 +220,14 @@ export const format = {
     usdt: (
       tokenPrice?: BigNumber | string | bigint | number,
       options?: {
-        decimals?: number; // 精度(默认18)
+        decimals?: number; // 精度(默认9)
         bignumDecimals?: number; // 格式化后的小数位数
         isAbbr?: boolean; // 是否开启缩写
         abbrOrigin?: number | (typeof NUMBER_ABBRS)[number]; // 大于指定值后开始缩写
       }
     ) => {
       // before
-      const decimals = options?.decimals ?? 18;
+      const decimals = options?.decimals ?? 9;
       const usdtUnitPrice = localCache.get('usdtUnitPrice', '0'); // 注意：示例currencyUsdtUnitPrice的单位是(usdt/currency)。如果currencyUsdtUnitPrice的单位有变化，可自行修改decimal默认值
 
       const value = BigNumber((tokenPrice ?? 0).toString())

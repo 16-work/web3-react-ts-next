@@ -14,12 +14,8 @@ export const ActionUser = () => {
   const { isPC } = store.global();
 
   /** Params */
-  const [mounted, setMounted] = useState(false);
 
   /** Actions */
-  // 防止wagmi报Hydration failed
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
 
   /** Template */
   return (

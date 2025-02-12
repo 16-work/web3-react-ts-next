@@ -5,7 +5,6 @@ export interface Transaction {
   description?: string;
   toastID?: string;
   extra?: any;
-  chainId: number;
   timestamp: number;
 }
 
