@@ -47,8 +47,8 @@ config
   --env
     --env.d.ts // 声明环境变量类型
     --.env.dev // 开发环境变量
-    --.env.devProd // 测试环境变量
-    --.env.production // 生产环境变量
+    --.env.test // 测试环境变量
+    --.env.prod // 生产环境变量
     --.env.mock // 虚拟环境变量(无接口时用)
 ```
 
@@ -1086,7 +1086,7 @@ export const DEFAULT_CHAIN = {
 ...
 
 // 支持的链（不要直接用chain[]，因为contracts那里要用到id的类型提示）
-export const SUPPORT_CHAINS = process.env.NEXT_PUBLIC_ENV === 'production' ? [DEFAULT_CHAIN.PROD.id, chains.其它链n主网.id] : [DEFAULT_CHAIN.DEV.id, chains.其它链n测试网.id];
+export const SUPPORT_CHAINS = process.env.NEXT_PUBLIC_ENV === 'prod' ? [DEFAULT_CHAIN.PROD.id, chains.其它链n主网.id] : [DEFAULT_CHAIN.DEV.id, chains.其它链n测试网.id];
 
 // 链图标
 export const CHAINS_ICON: Record<number, string> = {
