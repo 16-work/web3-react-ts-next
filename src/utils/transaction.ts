@@ -1,8 +1,9 @@
 import { connection } from '@/components/Providers/ProviderWallet';
+import { IDL } from '@/constants/idl';
 import { PublicKey, TransactionInstruction, TransactionMessage, VersionedTransaction } from '@solana/web3.js';
 
 export async function simulatePrepareTransaction(instructions: TransactionInstruction[], payer: PublicKey) {
-  const blockhash = await connection.getLatestBlockhash({ commitment: 'finalized' }).then((res) => res.blockhash);
+  const blockhash = await connection.getLatestBlockhash({ commitment: 'finalized' }).then((res: { blockhash: any }) => res.blockhash);
 
   const messageV0 = new TransactionMessage({
     payerKey: payer,
@@ -22,7 +23,10 @@ export async function simulateTx(versionedTransaction: VersionedTransaction) {
       throw new Error(simulate.value.err);
     } else {
       const errCode = (simulate.value.err as any)?.InstructionError?.[1]?.Custom;
-      if (errCode === 1) {
+      const errorInfo = IDL.errors.find((e: { code: number }) => e.code === errCode);
+      if (errorInfo?.msg) {
+        throw new Error(errorInfo?.msg);
+      } else if (errCode === 1) {
         throw new Error('Insufficient Balance');
       }
       const errCode2 = (simulate.value.err as any)?.InsufficientFundsForRent;
