@@ -1086,7 +1086,7 @@ export const DEFAULT_CHAIN = {
 ...
 
 // 支持的链（不要直接用chain[]，因为contracts那里要用到id的类型提示）
-export const SUPPORT_CHAINS = env.VITE_ENV === 'production' ? [DEFAULT_CHAIN.PROD.id, chains.其它链n主网.id] : [DEFAULT_CHAIN.DEV.id, chains.其它链n测试网.id];
+export const SUPPORT_CHAINS = process.env.NEXT_PUBLIC_ENV === 'production' ? [DEFAULT_CHAIN.PROD.id, chains.其它链n主网.id] : [DEFAULT_CHAIN.DEV.id, chains.其它链n测试网.id];
 
 // 链图标
 export const CHAINS_ICON: Record<number, string> = {
