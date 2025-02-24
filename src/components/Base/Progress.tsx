@@ -2,8 +2,8 @@ import { Progress as AProgress, ProgressProps } from 'antd';
 
 const styleType = {
   base: {
-    height: 'h-10',
-    bgColor: 'rgba(255, 255, 255 , 0.2)',
+    height: 'h-6',
+    bgColor: 'rgb(var(--cus-gray-900))',
     progressColor: 'rgb(var(--cus-primary-1))',
   },
 };
@@ -20,7 +20,6 @@ export const Progress = (props: Props & Omit<ProgressProps, 'percent' | 'strokeC
   /** Retrieval */
 
   /** Params */
-  const defaultHeight = 'h-10';
   const { type = 'base', ...params } = props;
 
   /** Actions */
