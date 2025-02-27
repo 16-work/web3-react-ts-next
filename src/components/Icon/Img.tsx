@@ -84,10 +84,10 @@ export const Img = (props: Props) => {
 
       {/* img */}
       {(!state.isError || (state.isError && defaultImgURL)) && (
-        <div className={`${sizeClassName}`}>
-          <img {...params} ref={imgRef} className={state.isLoading ? `w-0 h-0 opacity-0` : `inline-block shrink-0 ${props.className}`} />
+        <div className={`inline-block ${sizeClassName}`}>
+          <img {...params} ref={imgRef} className={state.isLoading ? `w-0 h-0 opacity-0` : `shrink-0 ${props.className}`} />
 
-          {state.isLoading && <span className={`inline-block w-full h-full shrink-0 ${skeleton} ${sizeClassName}`}></span>}
+          {state.isLoading && <span className={`w-full h-full shrink-0 ${skeleton} ${sizeClassName}`}></span>}
         </div>
       )}
     </>
