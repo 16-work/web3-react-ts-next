@@ -16,7 +16,7 @@ export const BtnUser = () => {
   /** Template */
   return account.address ? (
     // btn: user
-    <Button className={`btn-user    ${baseClassName} btn-primary `}>{format.address(account.address, 6, 4)}</Button>
+    <button className={`btn-user    ${baseClassName} btn-primary `}>{format.address(account.address, 6, 4)}</button>
   ) : (
     // btn: connect
     <Button onClick={connect} isLoading={account.isConnecting || account.isReconnecting} className={`btn-connect    ${baseClassName} btn-primary `}>

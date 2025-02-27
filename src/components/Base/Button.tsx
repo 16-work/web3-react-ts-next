@@ -1,3 +1,5 @@
+'use client';
+
 import { useAccount } from '@/hooks/useAccount';
 import { useTranslation } from '@/hooks/useTranslation';
 import useWallet from '@/hooks/useWallet';
