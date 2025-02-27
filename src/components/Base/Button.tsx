@@ -13,10 +13,9 @@ enum BtnStatus {
 }
 
 /** Props */
-interface Props extends Omit<ButtonProps, 'onClick'> {
+interface Props extends ButtonProps {
   to?: string;
   auth?: boolean;
-  onClick?: () => void;
 }
 
 /** Component
