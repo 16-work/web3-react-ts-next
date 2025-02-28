@@ -1,4 +1,5 @@
 'use client';
+
 import { store } from '@/store';
 import { SCREEN } from '@config/tailwindcss/screen';
 import { ReactNode } from 'react';

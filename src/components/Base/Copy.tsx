@@ -1,6 +1,8 @@
-import {ReactNode, useMemo} from 'react';
-import {Svg} from "@/components/Icon/Svg";
-import {tools} from "@/utils/tools";
+'use client';
+
+import { ReactNode, useMemo } from 'react';
+import { Svg } from '@/components/Icon/Svg';
+import { tools } from '@/utils/tools';
 
 /** Props */
 interface Props {
@@ -28,7 +30,7 @@ export const Copy = (props: Props) => {
       <Svg
         name="copy"
         className={`-mt-2 hover-primary ${iconClassName}`}
-        onClick={(e:any) => {
+        onClick={(e: any) => {
           e.preventDefault();
           e.stopPropagation();
           tools.copy(props.text);

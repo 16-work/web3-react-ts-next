@@ -1,3 +1,5 @@
+'use client';
+
 import { useTranslation } from '@/hooks/useTranslation';
 import { ReactNode } from 'react';
 import { Lottie } from '../Icon/Lottie';

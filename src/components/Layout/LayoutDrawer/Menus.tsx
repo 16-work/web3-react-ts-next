@@ -1,3 +1,5 @@
+'use client';
+
 import { useMenus } from '@/hooks/useMenus';
 import { store } from '@/store';
 import Link from 'next/link';

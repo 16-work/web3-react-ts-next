@@ -1,4 +1,5 @@
 'use client';
+
 import { ReactNode, useMemo } from 'react';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from 'antd';

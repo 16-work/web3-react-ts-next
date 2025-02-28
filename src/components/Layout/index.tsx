@@ -1,7 +1,8 @@
 'use client';
-import { useInit } from '@/hooks/init';
+
 import { store } from '@/store';
 import { ReactNode } from 'react';
+import { useInit } from '@/hooks/init';
 import { Scrollbar } from '../Base/Scrollbar';
 import { LayoutFooter } from './LayoutFooter';
 import { LayoutNav } from './LayoutNav';

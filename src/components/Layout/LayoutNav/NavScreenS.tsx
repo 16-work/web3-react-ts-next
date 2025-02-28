@@ -1,3 +1,5 @@
+'use client';
+
 import { store } from '@/store';
 import { BoxLogo } from './BoxLogo';
 import { SwitchChain } from '../LayoutActions/SwitchChain';

@@ -11,7 +11,6 @@ const styleType = {
 /** Props */
 interface Props {
   percent: number | string;
-
   type?: keyof typeof styleType;
 }
 

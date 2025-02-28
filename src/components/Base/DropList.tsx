@@ -1,3 +1,5 @@
+'use client';
+
 import { Option } from '@/types/common';
 import { Popover, PopoverProps } from 'antd';
 import { TooltipPlacement } from 'antd/es/tooltip';
@@ -41,7 +43,6 @@ interface Props extends Omit<PopoverProps, 'children' | 'arrow'> {
 export const DropList = (props: Props) => {
   /** Params */
   const trigger = props.trigger ?? ['hover'];
-
   const className = styleType[props.type ?? 'base'];
 
   const [open, setOpen] = useState(false);

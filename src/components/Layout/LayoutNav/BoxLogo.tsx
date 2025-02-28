@@ -1,7 +1,6 @@
-'use client';
-import { Svg } from '@/components/Icon/Svg';
-import { path } from '@/constants/path';
 import Link from 'next/link';
+import { path } from '@/constants/path';
+import { Svg } from '@/components/Icon/Svg';
 
 /** Component */
 export const BoxLogo = () => {
