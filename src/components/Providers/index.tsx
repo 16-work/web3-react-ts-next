@@ -1,4 +1,3 @@
-'use client';
 import { ReactNode } from 'react';
 import { ProviderWallet } from './ProviderWallet';
 import { ProviderAntd } from './ProviderAntd';

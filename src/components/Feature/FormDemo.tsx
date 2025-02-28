@@ -1,3 +1,5 @@
+'use client';
+
 import { useForm } from '@/hooks/useForm';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useLockFn } from '@/utils/ahooks';

@@ -1,5 +1,3 @@
-'use client';
-
 import { Support } from './Support';
 
 /** Component */

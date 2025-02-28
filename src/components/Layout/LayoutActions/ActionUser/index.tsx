@@ -4,8 +4,8 @@ import { useAccount } from '@/hooks/useAccount';
 import { store } from '@/store';
 import { BtnUser } from './BtnUser';
 import { DropUser } from './DropUser';
-import { Popover } from 'antd';
 import { useEffect, useState } from 'react';
+import { Popover } from '@/components/Popover/Popover';
 
 /** Component */
 export const ActionUser = () => {

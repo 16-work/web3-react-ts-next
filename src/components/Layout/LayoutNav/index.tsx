@@ -4,7 +4,6 @@ import { store } from '@/store';
 import { SCREEN } from '@config/tailwindcss/screen';
 import { NavScreenL } from './NavScreenL';
 import { NavScreenS } from './NavScreenS';
-import { useEffect, useState } from 'react';
 
 /** Component */
 export const LayoutNav = () => {

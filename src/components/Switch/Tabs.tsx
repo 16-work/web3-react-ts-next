@@ -36,9 +36,7 @@ interface Props {
 /** Component */
 export const Tabs = (props: Props) => {
   /** Params */
-  const className = useMemo(() => {
-    return styleType[props.type ?? 'base'];
-  }, [props.type]);
+  const className = styleType[props.type ?? 'base'];
 
   const state = useReactive({
     colWidth: 0,

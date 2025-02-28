@@ -1,3 +1,5 @@
+'use client';
+
 import { useAccount } from '@/hooks/useAccount';
 import { useTranslation } from '@/hooks/useTranslation';
 import useWallet from '@/hooks/useWallet';
@@ -13,10 +15,9 @@ enum BtnStatus {
 }
 
 /** Props */
-interface Props extends Omit<ButtonProps, 'onClick'> {
+interface Props extends ButtonProps {
   to?: string;
   auth?: boolean;
-  onClick?: () => void;
 }
 
 /** Component

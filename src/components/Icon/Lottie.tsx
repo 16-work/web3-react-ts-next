@@ -1,4 +1,5 @@
 'use client';
+
 import lottie, { AnimationItem } from 'lottie-web';
 import { useEffect, useMemo, useRef } from 'react';
 

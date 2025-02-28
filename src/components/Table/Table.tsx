@@ -1,4 +1,5 @@
 'use client';
+
 import { store } from '@/store';
 import { SCREEN } from '@config/tailwindcss/screen';
 import { useReactive } from 'ahooks';
@@ -20,7 +21,7 @@ const styleType = {
             gap-x-20 py-15 
             border-b-2 border-black 
             text-common-1 font-lg`,
-    tbody: `xs:min-h-200 md:min-h-250 relative 
+    tbody: `box-data relative 
             `,
     row: `grid xs:items-start md:items-center overflow-hidden
           gap-x-20 gap-y-10 xs:py-25 md:py-15 
@@ -146,11 +147,18 @@ export const Table = (props: Props) => {
               </div>
             )}
 
-            {/* row: link */}
+            {/* row: link
+             * 里面有Button的话，Button要加上 e.preventDefault(); e.stopPropagation(); 否则Button会点不了
+             */}
             {props.other?.rowTo && (
               <Link href={props.other?.rowTo(rowIndex)} className={`${classNames.row} cursor-pointer`}>
                 {props.elements.cols(rowNode, rowIndex).map((col, colIndex) => (
-                  <TCol label={props.elements.labels[colIndex]} className={classNames.col[colIndex]} alwaysFullyDisplay={props.other?.alwaysFullyDisplay}>
+                  <TCol
+                    key={colIndex}
+                    label={props.elements.labels[colIndex]}
+                    className={classNames.col[colIndex]}
+                    alwaysFullyDisplay={props.other?.alwaysFullyDisplay}
+                  >
                     {col}
                   </TCol>
                 ))}
@@ -183,7 +191,7 @@ export const Table = (props: Props) => {
         {props.state.isLoading && props.state.isInit && !props.other?.isFrequentPolling && <Loading />}
 
         {/* no data */}
-        {props.state.list.length === 0 && !props.state.isLoading && <NoData />}
+        {props.state.list.length === 0 && props.state.isInit && <NoData />}
       </div>
     </div>
   );
