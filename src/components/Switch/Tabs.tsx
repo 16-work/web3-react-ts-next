@@ -9,17 +9,21 @@ const styleType = {
     box: 'w-fit p-5 border rounded-full',
     initOffset: 5,
     list: '',
-    tab: 'px-65 py-6 rounded-full text-black font-xl',
-    activeBg: 'bg-primary-1 rounded-full',
+    tab: 'px-65 py-6 text-black font-xl',
     activeTab: '!text-common-1',
+
+    hr: '',
+    activeBg: 'bg-primary-1 rounded-full',
   },
   second: {
     box: '',
     initOffset: 0,
     list: '',
     tab: '',
-    activeBg: 'bg-primary-1',
     activeTab: '',
+
+    hr: 'border-l border-black',
+    activeBg: 'bg-primary-1',
   },
 };
 
@@ -30,7 +34,7 @@ interface Props {
   onSwitch: (tab: any) => void;
 
   type?: keyof typeof styleType;
-  itemClassname?: string;
+  tabClassname?: string;
 }
 
 /** Component */
@@ -81,7 +85,8 @@ export const Tabs = (props: Props) => {
             ref={index === 0 ? colItemRef : null}
             className={`flex-align-x justify-center duration-300 cursor-pointer whitespace-nowrap
               ${className.tab}
-              ${props.itemClassname}
+              ${props.tabClassname}
+              ${index !== 0 && className.hr}
               ${item.value === props.value && className.activeTab}    
             `}
             onClick={() => props.onSwitch(item.value)}

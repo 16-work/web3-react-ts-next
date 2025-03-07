@@ -3,19 +3,19 @@ import { Progress as AProgress, ProgressProps } from 'antd';
 const styleType = {
   base: {
     height: 'h-6',
-    bgColor: 'rgb(var(--cus-gray-900))',
+    bgColor: 'rgb(var(--cus-gray-100))',
     progressColor: 'rgb(var(--cus-primary-1))',
   },
 };
 
 /** Props */
-interface Props {
+interface Props extends Omit<ProgressProps, 'percent' | 'strokeColor' | 'trailColor' | 'type'> {
   percent: number | string;
   type?: keyof typeof styleType;
 }
 
 /** Component */
-export const Progress = (props: Props & Omit<ProgressProps, 'percent' | 'strokeColor' | 'trailColor'>) => {
+export const Progress = (props: Props) => {
   /** Retrieval */
 
   /** Params */

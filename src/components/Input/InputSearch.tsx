@@ -70,7 +70,7 @@ export const InputSearch = (props: Props) => {
 
       {/* input */}
       <input
-        className="base-input flex-1 h-full pr-40"
+        className="base-input flex-1 h-full"
         placeholder={props.placeholder}
         value={state.value}
         onChange={onChange}
