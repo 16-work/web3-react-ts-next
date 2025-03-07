@@ -47,6 +47,7 @@ $theme-name: 'theme-light-blue';
 
 // 其它（这里的颜色如果不需要放在color.ts，颜色格式可随意）
 .other {
+  --cus-popover-1: 255, 255, 255;
   --cus-scrollbar: rgba(0, 0, 0, 0.15);
 }
 
