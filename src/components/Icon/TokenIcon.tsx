@@ -13,7 +13,8 @@ interface Props {
   src?: string;
   contract?: string;
 
-  preview?: boolean;
+  // 要用canvas读图片信息时开下anonymous，然后开发环境停用缓存
+  crossOrigin?: 'anonymous' | 'use-credentials';
 }
 
 /** Component */
@@ -22,6 +23,8 @@ export const TokenIcon = (props: Props) => {
   const { tokenIconList, setTokenIconList } = store.global();
 
   /** Params */
+  const { contract, ...params } = props;
+
   const className = useMemo(() => {
     // 未设置height时自动和width一致
     const regex = /\bh-(\d+|auto|full|screen)\b/;
@@ -54,5 +57,5 @@ export const TokenIcon = (props: Props) => {
   }, [props.contract]);
 
   /** Template */
-  return <Img className={`${className}`} src={props.src || tokenIconList[props.contract ?? '']} preview={props.preview ?? false} defaultImg="token" />;
+  return <Img {...params} className={`${className}`} src={props.src || tokenIconList[props.contract ?? '']} defaultImg="token" />;
 };

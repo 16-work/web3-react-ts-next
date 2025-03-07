@@ -11,11 +11,13 @@ interface Props {
   /** 注：1.至少要有w；2.最好加上h或aspect属性，否则加载时高度会为0 */
   className: string;
 
-  preview?: boolean; // 是否预览
   defaultImg?: 'empty' | 'token'; // 默认图片
   skeletonType?: 'light' | 'dark'; // 骨架屏样式类型
   hideSkeleton?: boolean; // 是否隐藏骨架屏
   alt?: string;
+
+  // 要用canvas读图片信息时开下anonymous，然后开发环境停用缓存
+  crossOrigin?: 'anonymous' | 'use-credentials';
 }
 
 /** Component */
