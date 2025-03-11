@@ -2,13 +2,14 @@
 
 import { store } from '@/store';
 import { useReactive } from '@/utils/ahooks';
+import { tools } from '@/utils/tools';
 import { useEffect, useMemo, useRef } from 'react';
 
 /** Props */
 interface Props {
   /** 如果是本地图片，直接写images/... */
   src: string; //
-  /** 注：1.至少要有w；2.最好加上h或aspect属性，否则加载时高度会为0 */
+  /** 注：1.至少要有w；2.无h(或aspect)时，默认h=w */
   className: string;
 
   defaultImg?: 'empty' | 'token'; // 默认图片
@@ -43,7 +44,10 @@ export const Img = (props: Props) => {
 
   const sizeClassName = useMemo(() => {
     // 读取w、h、rounded相关属性
-    return props.className.match(/\b(w|h|absolute|reactive|fixed|m|rounded|shadow|aspect-square)\S*/g)?.join(' ');
+    const className = props.className.match(/\b(?:[\w-]+:)*?(w|h|absolute|reactive|fixed|m|rounded|shadow|aspect-square)\S*/g)?.join(' ') ?? '';
+
+    // 无高度默认与w
+    return tools.getAutoHeightClassName(className);
   }, [props.className]);
 
   const skeleton = useMemo(() => {

@@ -4,6 +4,7 @@ import { api } from '@/api';
 import { store } from '@/store';
 import { useEffect, useMemo } from 'react';
 import { Img } from './Img';
+import { tools } from '@/utils/tools';
 
 /** Props */
 interface Props {
@@ -24,13 +25,6 @@ export const TokenIcon = (props: Props) => {
 
   /** Params */
   const { contract, ...params } = props;
-
-  const className = useMemo(() => {
-    // 未设置height时自动和width一致
-    const regex = /\bh-(\d+|auto|full|screen)\b/;
-    if (regex.test(props.className)) return props.className;
-    else return props.className + ' aspect-square';
-  }, [props.className]);
 
   /** Actions */
   const checkIconByContract = async () => {
@@ -57,5 +51,5 @@ export const TokenIcon = (props: Props) => {
   }, [props.contract]);
 
   /** Template */
-  return <Img {...params} className={`${className}`} src={props.src || tokenIconList[props.contract ?? '']} defaultImg="token" />;
+  return <Img {...params} className={`${props.className}`} src={props.src || tokenIconList[props.contract ?? '']} defaultImg="token" />;
 };

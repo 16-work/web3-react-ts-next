@@ -112,6 +112,12 @@ export const tools = {
     }
   },
 
+  getAutoHeightClassName: (className: string) => {
+    const regex = /\b(?:[\w-]+:)*?(h-(\d+|auto|full|screen)|aspect-\S+)\b/;
+    if (regex.test(className ?? '')) return className;
+    else return className + ' aspect-square';
+  },
+
   isAndroidNonChrome: (): boolean => {
     const userAgent = navigator.userAgent.toLowerCase();
     return /android/.test(userAgent);
