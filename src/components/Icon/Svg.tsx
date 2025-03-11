@@ -1,5 +1,6 @@
 'use client';
 
+import { tools } from '@/utils/tools';
 import { useMemo } from 'react';
 
 /** 注意:
@@ -22,10 +23,7 @@ interface Props {
 export const Svg = (props: Props) => {
   /** Parmas */
   const className = useMemo(() => {
-    // 未设置height时自动和width一致
-    const regex = /\bh-(\d+|auto|full|screen)\b/;
-    if (regex.test(props.className)) return props.className;
-    else return props.className + ' aspect-square';
+    return tools.getAutoHeightClassName(props.className);
   }, [props.className]);
 
   /** Template */

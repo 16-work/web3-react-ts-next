@@ -1,5 +1,6 @@
 'use client';
 
+import { tools } from '@/utils/tools';
 import lottie, { AnimationItem } from 'lottie-web';
 import { useEffect, useMemo, useRef } from 'react';
 
@@ -17,10 +18,7 @@ export const Lottie = (props: Props) => {
   const animationContainer = useRef<HTMLDivElement>(null);
 
   const className = useMemo(() => {
-    // 未设置height时自动和width一致
-    const regex = /\bh-(\d+|auto|full|screen)\b/;
-    if (regex.test(props.className)) return props.className;
-    else return props.className + ' aspect-square';
+    return tools.getAutoHeightClassName(props.className);
   }, [props.className]);
 
   /** Actions */
