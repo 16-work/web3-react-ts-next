@@ -44,9 +44,9 @@ export const Img = (props: Props) => {
 
   const sizeClassName = useMemo(() => {
     // 读取w、h、rounded相关属性
-    const className = props.className.match(/\b(?:[\w-]+:)*?(w|h|absolute|reactive|fixed|m|rounded|shadow|aspect-square)\S*/g)?.join(' ') ?? '';
+    const className = props.className.match(/\b(?:[\w-]+:)*?(w|h|absolute|reactive|fixed|m|rounded|shadow|aspect)\S*/g)?.join(' ') ?? '';
 
-    // 无高度默认与w
+    // 无高度则默认h=w
     return tools.getAutoHeightClassName(className);
   }, [props.className]);
 
@@ -93,9 +93,13 @@ export const Img = (props: Props) => {
       {/* img */}
       {(!state.isError || (state.isError && defaultImgURL)) && (
         <div className={`inline-block ${sizeClassName}`}>
-          <img {...params} ref={imgRef} className={state.isLoading ? `w-0 h-0 opacity-0` : `shrink-0 ${props.className}`} />
+          <img
+            {...params}
+            ref={imgRef}
+            className={`img-correct    ${state.isLoading ? `w-0 h-0 opacity-0` : `shrink-0 ${tools.getAutoHeightClassName(props.className)}`}`}
+          />
 
-          {state.isLoading && <span className={`w-full h-full shrink-0 ${skeleton} ${sizeClassName}`}></span>}
+          {state.isLoading && <span className={`img-loading    inline-block shrink-0 ${skeleton} ${sizeClassName}`}></span>}
         </div>
       )}
     </>
