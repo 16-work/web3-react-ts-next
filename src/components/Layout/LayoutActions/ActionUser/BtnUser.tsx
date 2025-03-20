@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/Base/Button';
 import { useAccount } from '@/hooks/useAccount';
+import { useTranslation } from '@/hooks/useTranslation';
 import useWallet from '@/hooks/useWallet';
 import { format } from '@/utils/format';
 
@@ -11,6 +12,7 @@ const baseClassName = 'xs:w-full md:w-fit xs:h-80 md:h-40 px-20 rounded-8 font-b
 export const BtnUser = () => {
   /** Retrieval */
   const account = useAccount();
+  const { t } = useTranslation();
   const { connect } = useWallet();
 
   /** Template */
@@ -20,7 +22,7 @@ export const BtnUser = () => {
   ) : (
     // btn: connect
     <Button onClick={connect} isLoading={account.isConnecting || account.isReconnecting} className={`btn-connect    ${baseClassName} btn-primary `}>
-      <span className="font-base">Connect</span>
+      {t.account.connect}
     </Button>
   );
 };
