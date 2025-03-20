@@ -237,6 +237,8 @@
 
 /* 抽屉 */ 
 .ant-drawer {
+  // z-index: 2 !important; // 顶部导航需要遮住Drawer时开启
+  
   // 去除聚焦边缘线
   &:focus-visible {
     outline: none !important;
@@ -256,6 +258,11 @@
   .ant-drawer-body {
     // 内边距
     padding: 0 !important;
+  }
+
+  // 蒙版
+  .ant-drawer-mask {
+    background: rgba(0, 0, 0, 0.2) !important;
   }
 }
 
