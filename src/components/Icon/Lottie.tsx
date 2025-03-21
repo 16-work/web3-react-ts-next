@@ -8,7 +8,6 @@ import { useEffect, useMemo, useRef } from 'react';
 interface Props {
   name: string;
   className: string;
-
   onClick?: (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 }
 
@@ -16,6 +15,7 @@ interface Props {
 export const Lottie = (props: Props) => {
   /** Params */
   const animationContainer = useRef<HTMLDivElement>(null);
+  const animRef = useRef<AnimationItem | null>(null); // 新增ref保存动画实例
 
   const className = useMemo(() => {
     return tools.getAutoHeightClassName(props.className);
@@ -23,13 +23,22 @@ export const Lottie = (props: Props) => {
 
   /** Actions */
   useEffect(() => {
-    let anim: AnimationItem | undefined;
-
     const loadAnimation = async () => {
       try {
         const animationData = await import(`@/assets/lottie/${props.name}.json`);
+
+        // 清理旧实例和容器内容
+        if (animRef.current) {
+          animRef.current.destroy();
+          animRef.current = null;
+        }
         if (animationContainer.current) {
-          anim = lottie.loadAnimation({
+          animationContainer.current.innerHTML = ''; // 清空容器
+        }
+
+        // 创建新实例
+        if (animationContainer.current) {
+          animRef.current = lottie.loadAnimation({
             container: animationContainer.current,
             renderer: 'svg',
             loop: true,
@@ -45,8 +54,11 @@ export const Lottie = (props: Props) => {
     loadAnimation();
 
     return () => {
-      // 清除动画实例以防止内存泄漏
-      if (anim) anim.destroy();
+      // 确保卸载时清理
+      if (animRef.current) {
+        animRef.current.destroy();
+        animRef.current = null;
+      }
     };
   }, [props.name]);
 

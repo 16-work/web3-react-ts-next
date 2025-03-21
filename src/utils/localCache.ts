@@ -12,6 +12,8 @@ export const localCache = {
     localStorage.setItem(key, JSON.stringify(data));
   },
   get(key: CacheKey, defaultValue: any = null): any | null {
+    if (typeof window === 'undefined') return defaultValue;
+
     const item = localStorage.getItem(key);
     if (item) {
       try {

@@ -16,6 +16,7 @@ export default function RootLayout(props: { children: ReactNode }) {
         <title>{process.env.NEXT_PUBLIC_APPNAME}</title>
         <meta name="description" content={meta.description}></meta>
         <meta name="keywords" content={meta.keywords}></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
       </head>
 
       <body className={customFont.variable}>

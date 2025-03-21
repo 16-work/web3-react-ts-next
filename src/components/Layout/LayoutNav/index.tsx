@@ -18,6 +18,7 @@ export const LayoutNav = () => {
   return (
     <div id="layout-nav-base" className="bg-white">
       <div id="layout-nav" className="bg-white">
+        {/* 开发环境会闪正常，生产环境一般看不出来 */}
         {screenType >= SCREEN.MD ? <NavScreenL /> : <NavScreenS />}
       </div>
     </div>

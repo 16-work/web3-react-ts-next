@@ -14,7 +14,7 @@ export const format = {
   timeDistance: (time: number) => {
     const t = tools.getT();
     const seconds = (new Date().getTime() - new Date(time).getTime()) / 1000;
-    if (seconds <= 30) return t.common.aFewSecondsAgo;
+    if (seconds <= 60) return t.common.aFewSecondsAgo(seconds.toFixed(0));
     else if (seconds <= 60) return t.common.halfAMinuteAgo;
     else if (seconds <= 60 * 2) return t.common.aMinuteAgo;
     else if (seconds <= 60 * 60) return t.common.nMinutesAgo(Math.floor(seconds / 60));
@@ -217,6 +217,7 @@ export const format = {
     },
 
     /** 将币种价格转为美元价格(文档四、2.2.2附有相关公式及示例) */
+    // 开发环境会报Hydration failed，不用管，生产环境不会报
     usdt: (
       tokenPrice?: BigNumber | string | bigint | number,
       options?: {
