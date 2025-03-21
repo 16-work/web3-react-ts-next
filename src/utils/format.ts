@@ -217,6 +217,7 @@ export const format = {
     },
 
     /** 将币种价格转为美元价格(文档四、2.2.2附有相关公式及示例) */
+    // 开发环境会报Hydration failed，不用管，生产环境不会报
     usdt: (
       tokenPrice?: BigNumber | string | bigint | number,
       options?: {
