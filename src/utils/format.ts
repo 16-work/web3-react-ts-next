@@ -15,13 +15,9 @@ export const format = {
     const t = tools.getT();
     const seconds = (new Date().getTime() - new Date(time).getTime()) / 1000;
     if (seconds <= 60) return t.common.aFewSecondsAgo(seconds.toFixed(0));
-    else if (seconds <= 60) return t.common.halfAMinuteAgo;
-    else if (seconds <= 60 * 2) return t.common.aMinuteAgo;
     else if (seconds <= 60 * 60) return t.common.nMinutesAgo(Math.floor(seconds / 60));
-    else if (seconds <= 60 * 60 * 2) return t.common.aHourAgo;
     else if (seconds <= 60 * 60 * 24) return t.common.nHoursAgo(Math.floor(seconds / 60 / 60));
-    else if (seconds <= 60 * 60 * 24 * 2) return t.common.aDayAgo;
-    else if (seconds <= 60 * 60 * 24 * 31) return t.common.nDaysAgo(Math.floor(seconds / 60 / 60 / 24));
+    else if (seconds <= 60 * 60 * 24 * 30) return t.common.nDaysAgo(Math.floor(seconds / 60 / 60 / 24));
     else return moment(time).format('YYYY/MM/DD HH:mm:ss');
   },
 
