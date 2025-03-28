@@ -33,20 +33,20 @@ export const LayoutDrawer = () => {
         </div>
 
         {/* bottom */}
-        {account.address && (
-          <div className="flex-align-x justify-between">
-            {/* left */}
-            <div className="flex-align-x gap-x-30">
-              <SwitchTheme />
-              <SwitchLanguage />
-            </div>
+        <div className="flex-align-x justify-between">
+          {/* left */}
+          <div className="flex-align-x gap-x-30">
+            <SwitchTheme />
+            <SwitchLanguage />
+          </div>
 
-            {/* right */}
+          {/* right */}
+          {account.address && (
             <Button onClick={disconnect}>
               <Svg name="logout" className="w-50" />
             </Button>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </Drawer>
   );
