@@ -25,7 +25,11 @@ export const SwitchChain = () => {
   return (
     account.address && (
       <Button onClick={switchChain} className="btn-switch-chain    rounded-full">
-        <Svg name={account.chain ? CHAINS_ICON[account.chain.id] : 'wrong-network'} className={`xs:w-50 md:w-28 ${!account.chain && 'text-stress-1'}`} />
+        {/* aspect-square别去掉，否则Next里aspect会玄学失效 */}
+        <Svg
+          name={account.chain ? CHAINS_ICON[account.chain.id] : 'wrong-network'}
+          className={`xs:w-50 md:w-28 aspect-square ${!account.chain && 'text-stress-1'}`}
+        />
       </Button>
     )
   );
