@@ -4,7 +4,7 @@ import { tools } from '@/utils/tools';
 import { useMemo } from 'react';
 
 /** 注意:
- * 把svg文件的width&height去掉,否则改不了宽高
+ * 把svg文件的width&height去掉,换成viewBox="0 0 w h", 否则改不了宽高
  * 把svg文件的fill改成currentColor,否则改不了颜色
  */
 

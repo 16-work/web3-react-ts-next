@@ -15,9 +15,10 @@ enum BtnStatus {
 }
 
 /** Props */
-interface Props extends ButtonProps {
+interface Props extends Omit<ButtonProps, 'disabled'> {
   to?: string;
   auth?: boolean;
+  isDisabled?: boolean;
 }
 
 /** Component
@@ -53,7 +54,7 @@ export const Button = (props: Props) => {
       case BtnStatus.UNCONNECT:
         return connect;
       default:
-        return !props.disabled && !props.isLoading ? props.onClick : () => {};
+        return !props.isDisabled && !props.isLoading ? props.onClick : () => {};
     }
   }, [btnStatus, props.onClick]);
 
@@ -64,11 +65,11 @@ export const Button = (props: Props) => {
       {!props.to && (
         <NButton
           {...params}
-          disabled={btnStatus === BtnStatus.CORRECT && props.disabled}
+          disabled={btnStatus === BtnStatus.CORRECT && props.isDisabled}
           className={`
             h-fit flex-align-x px-0 outline-none 
             ${props.className} 
-            ${btnStatus === BtnStatus.CORRECT && (props.disabled || props.isLoading) ? 'btn-disabled' : ''} 
+            ${btnStatus === BtnStatus.CORRECT && (props.isDisabled || props.isLoading) ? 'btn-disabled' : ''} 
           `}
           isLoading={false}
           onClick={btnClickFun}
@@ -90,7 +91,7 @@ export const Button = (props: Props) => {
           className={`
             w-fit h-fit relative flex-align-x justify-center px-0 outline-none overflow-hidden
             ${props.className} 
-            ${props.disabled || props.isLoading ? 'btn-disabled' : ''} 
+            ${props.isDisabled || props.isLoading ? 'btn-disabled' : ''} 
           `}
         >
           {props.children}

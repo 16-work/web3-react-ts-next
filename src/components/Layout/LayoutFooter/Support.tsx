@@ -44,7 +44,7 @@ export const Support = () => {
     <div style={{ gridTemplateColumns: `repeat(${icons.length}, minmax(0, 1fr))` }} className="w-fit grid gap-x-37">
       {icons.map((item) => (
         <a key={item.label} href={item.href} target="_blank" className="xs:w-66 md:w-44 flex-align-x justify-center rounded-6">
-          <Svg name={item.icon} className="w-full h-full text-black" />
+          <Svg name={item.icon} className="w-full h-full hover-primary" />
         </a>
       ))}
     </div>

@@ -4,17 +4,18 @@ import { store } from '@/store';
 import { useReactive } from '@/utils/ahooks';
 import { tools } from '@/utils/tools';
 import { useEffect, useMemo, useRef } from 'react';
+import NextImage from 'next/image';
+
+// 注意：没有骨架屏版的Img
 
 /** Props */
 interface Props {
-  /** 如果是本地图片，直接写images/... */
+  /** 如果是本地图片，直接写/images/... */
   src: string; //
   /** 注：1.至少要有w；2.无h(或aspect)时，默认h=w */
   className: string;
 
   defaultImg?: 'empty' | 'token'; // 默认图片
-  skeletonType?: 'light' | 'dark'; // 骨架屏样式类型
-  hideSkeleton?: boolean; // 是否隐藏骨架屏
   alt?: string;
   onClick?: () => void;
 
@@ -23,23 +24,22 @@ interface Props {
 }
 
 /** Component */
-export const Img = (props: Props) => {
+export const Image = (props: Props) => {
   /** Retrieval */
-  const { theme } = store.global();
 
   /** Params */
-  const { defaultImg, skeletonType, hideSkeleton, className, ...params } = props;
+  const { defaultImg, className, ...params } = props;
 
   const imgRef = useRef<any>(null);
 
   const state = useReactive({
-    isLoading: true,
+    isLoading: false,
     isError: false,
   });
 
   const defaultImgURL = useMemo(() => {
     if (!props.defaultImg || props.defaultImg === 'empty') return '';
-    else if (props.defaultImg === 'token') return 'images/common/default-token.png';
+    else if (props.defaultImg === 'token') return '/images/common/default-token.png';
     else return props.defaultImg;
   }, [props.defaultImg]);
 
@@ -51,11 +51,6 @@ export const Img = (props: Props) => {
     // 无高度则默认h=w
     return tools.getAutoHeightClassName(className);
   }, [props.className]);
-
-  const skeleton = useMemo(() => {
-    const type = (props.skeletonType ?? theme.search('light') !== -1) ? 'dark' : 'light';
-    return `skeleton-${type}`;
-  }, [props.skeletonType, theme]);
 
   /** Actions */
   useEffect(() => {
@@ -94,16 +89,16 @@ export const Img = (props: Props) => {
 
       {/* img */}
       {(!state.isError || (state.isError && defaultImgURL)) && (
-        <div className={`inline-block ${sizeClassName}`}>
-          <img
-            {...params}
-            ref={imgRef}
-            onClick={props.onClick}
-            className={`img-correct    ${state.isLoading ? `w-0 h-0 opacity-0` : `shrink-0 ${tools.getAutoHeightClassName(props.className)}`}`}
-          />
-
-          {state.isLoading && <span className={`img-loading    inline-block shrink-0 ${!hideSkeleton && skeleton} ${sizeClassName}`}></span>}
-        </div>
+        <NextImage
+          {...params}
+          ref={imgRef}
+          alt={params.alt ?? ''}
+          width={0}
+          height={0}
+          sizes="100vw"
+          className={`img-correct    ${state.isLoading ? `w-0 h-0 opacity-0` : `shrink-0 ${tools.getAutoHeightClassName(props.className)}`}`}
+          onClick={props.onClick}
+        />
       )}
     </>
   );

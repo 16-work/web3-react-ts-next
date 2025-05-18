@@ -1,13 +1,14 @@
 'use client';
 
 import { tools } from '@/utils/tools';
-import lottie, { AnimationItem } from 'lottie-web';
+import { AnimationItem } from 'lottie-web';
 import { useEffect, useMemo, useRef } from 'react';
 
 /** Props */
 interface Props {
   name: string;
   className: string;
+  loop?: boolean;
   onClick?: (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 }
 
@@ -25,6 +26,7 @@ export const Lottie = (props: Props) => {
   useEffect(() => {
     const loadAnimation = async () => {
       try {
+        const lottie = (await import('lottie-web')).default;
         const animationData = await import(`@/assets/lottie/${props.name}.json`);
 
         // 清理旧实例和容器内容
@@ -41,7 +43,7 @@ export const Lottie = (props: Props) => {
           animRef.current = lottie.loadAnimation({
             container: animationContainer.current,
             renderer: 'svg',
-            loop: true,
+            loop: props.loop ?? true,
             autoplay: true,
             animationData: animationData.default,
           });
