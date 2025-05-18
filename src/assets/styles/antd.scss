@@ -1,6 +1,7 @@
 /* tooltip */ 
 .ant-tooltip {
   z-index: 2 !important;
+  font-family: var(--font-custom) !important;
 
   // 箭头
   .ant-tooltip-arrow::before {
@@ -27,6 +28,7 @@
   justify-content: center;
   height: fit !important;
   margin-bottom: 2px;
+  font-family: var(--font-custom) !important;
 
   // 左右箭头
   .ant-pagination-item-link {
@@ -42,6 +44,7 @@
   .ant-pagination-item {
     border: none;
     background: transparent !important;
+    font-family: var(--font-custom) !important;
 
     // 页数按钮(未激活)
     a {
@@ -101,6 +104,8 @@
 
 /* 气泡框 */
 .ant-popover {
+  font-family: var(--font-custom) !important;
+
   // .ant-popover-arrow::after {
   //   box-shadow: none !important;
   // }
@@ -131,6 +136,8 @@
 
 /* 模态框 */
 .ant-modal {
+  font-family: var(--font-custom) !important;
+  
   .ant-modal-content {
     padding: 0 !important;
     background: transparent !important;
