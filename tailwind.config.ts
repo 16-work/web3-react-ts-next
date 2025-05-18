@@ -19,6 +19,7 @@ export default {
     },
     textColor: {
       ...cusColors.primary,
+      ...cusColors.second,
       ...cusColors.feature,
       ...cusColors.base,
       ...cusColors.text,
