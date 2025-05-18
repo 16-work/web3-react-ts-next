@@ -11,7 +11,7 @@ export const DEFAULT_CHAIN = {
 export const DEFAULT_CHAIN_CURRENT = process.env.NEXT_PUBLIC_ENV === 'prod' ? DEFAULT_CHAIN.PROD : DEFAULT_CHAIN.DEV;
 
 // 支持的链ID
-export const SUPPORT_CHAINS = process.env.NEXT_PUBLIC_ENV === 'prod' ? [DEFAULT_CHAIN.PROD.id] : [DEFAULT_CHAIN.DEV.id];
+export const SUPPORT_CHAIN_IDS = process.env.NEXT_PUBLIC_ENV === 'prod' ? [DEFAULT_CHAIN.PROD.id] : [DEFAULT_CHAIN.DEV.id];
 
 // 链图标
 export const CHAINS_ICON: Record<number, string> = {

@@ -11,13 +11,13 @@ import {
   walletConnectWallet,
   binanceWallet,
 } from '@rainbow-me/rainbowkit/wallets';
-import { chains, SUPPORT_CHAINS } from './chain/index';
+import { chains, SUPPORT_CHAIN_IDS } from './chain/index';
 
 //@ts-ignore
 export const WAGMI_CONFIG = getDefaultConfig({
   appName: process.env.NEXT_PUBLIC_APPNAME!,
   projectId: '8de5a8f4d65f36d28b3e25fb7129fbda',
-  chains: Object.values(chains).filter((chain) => SUPPORT_CHAINS.includes(chain.id as never)) as any,
+  chains: Object.values(chains).filter((chain) => SUPPORT_CHAIN_IDS.includes(chain.id as never)) as any,
   wallets: [
     {
       groupName: 'Recommended',
