@@ -7,10 +7,11 @@ import { CSSProperties, useRef } from 'react';
 import { Scrollbars, ScrollbarProps } from 'react-custom-scrollbars-2';
 
 /** Props */
-interface Props extends ScrollbarProps {
+interface Props extends Omit<ScrollbarProps, 'onScroll'> {
   minHeight?: number;
   maxHeight?: number;
   static?: boolean;
+  onScroll?: (offsetY: number) => void;
   onHitBottom?: (isHitBottom: boolean) => void;
 }
 
@@ -93,8 +94,8 @@ export const Scrollbar = (props: Props) => {
       renderTrackVertical={props.static && isPC ? renderThumbVertical : undefined}
       autoHide={props.autoHide ?? !isPC} // 移动端滚完就隐藏
       ref={refScrollBar}
-      onScroll={(e) => {
-        props.onScroll && props.onScroll(e);
+      onScroll={() => {
+        props.onScroll && props.onScroll(refScrollBar.current.getScrollTop());
         onScroll();
       }}
     >
