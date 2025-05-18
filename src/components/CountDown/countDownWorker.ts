@@ -1,4 +1,5 @@
 // 这里不要import任何东西
+'use client';
 
 self.onmessage = function (e: MessageEvent) {
   const { start, end } = e.data;
