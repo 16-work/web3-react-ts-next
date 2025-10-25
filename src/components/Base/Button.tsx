@@ -70,7 +70,7 @@ export const Button = (props: Props) => {
       {!props.to && (
         <NButton
           {...params}
-          disabled={btnStatus === BtnStatus.CORRECT && props.isDisabled}
+          isDisabled={btnStatus === BtnStatus.CORRECT && props.isDisabled}
           className={`
             h-fit flex-align-x px-0 outline-none 
             ${props.className} 

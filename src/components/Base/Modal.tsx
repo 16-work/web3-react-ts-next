@@ -73,7 +73,7 @@ export const Modal = (props: Props) => {
       `}
                 auth={props.okAuth}
                 isLoading={props.isLoading}
-                disabled={props.disabled}
+                isDisabled={props.disabled}
                 onClick={props.onOk}
               >
                 {okText}

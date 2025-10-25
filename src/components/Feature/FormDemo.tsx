@@ -71,7 +71,7 @@ export const FormDemo = () => {
       </FieldItem>
 
       {/* btn: submit */}
-      <Button auth disabled={btnInfo.disabled} isLoading={task.status === 0} onClick={beforeSubmit(onSubmit)} className="btn-create    btn-primary">
+      <Button auth isDisabled={btnInfo.disabled} isLoading={task.status === 0} onClick={beforeSubmit(onSubmit)} className="btn-create    btn-primary">
         {btnInfo.text}
       </Button>
     </div>
